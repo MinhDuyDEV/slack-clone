@@ -8,12 +8,7 @@ const WorkspaceIdPage = () => {
 
   const { data, isLoading } = useGetWorkspace({ id: workspaceId });
   if (isLoading) return null;
-  return (
-    <div>
-      WorkspaceIdPage
-      <div>Data: {JSON.stringify(data)}</div>
-    </div>
-  );
+  return <div>WorkspaceIdPage</div>;
 };
 
 export default WorkspaceIdPage;
