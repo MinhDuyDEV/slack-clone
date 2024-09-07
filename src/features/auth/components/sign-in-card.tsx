@@ -11,10 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SignInFlow } from "../types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+
+import { SignInFlow } from "../types";
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
