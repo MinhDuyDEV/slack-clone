@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 
-import "./globals.css";
+import Modals from "@/components/modals";
+import { Toaster } from "@/components/ui/sonner";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
+
+import "./globals.css";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -24,7 +27,11 @@ export default function RootLayout({
     <ConvexAuthNextjsServerProvider>
       <html lang='en'>
         <body className={font.className}>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ConvexClientProvider>
+            <Toaster />
+            <Modals />
+            {children}
+          </ConvexClientProvider>
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>
