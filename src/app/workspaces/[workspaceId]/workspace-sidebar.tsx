@@ -6,6 +6,7 @@ import {
   SendHorizonal,
 } from "lucide-react";
 
+import { useChannelId } from "@/hooks/use-channel-id";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 import { useGetChannels } from "@/features/channels/api/use-get-channels";
@@ -20,6 +21,7 @@ import WorkspaceSection from "./workspace-section";
 
 const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId();
+  const channelId = useChannelId();
   const [_open, setOpen] = useCreateChannelModal();
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({
@@ -70,6 +72,7 @@ const WorkspaceSidebar = () => {
             icon={HashIcon}
             label={channel.name}
             id={channel._id}
+            variant={channelId === channel._id ? "active" : "default"}
           />
         ))}
       </WorkspaceSection>
