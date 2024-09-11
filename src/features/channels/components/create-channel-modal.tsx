@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -27,7 +28,9 @@ const CreateChannelModal = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\s+/g, "-").replace(/[^a-z-]/g, "");
+    const value = e.target.value
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
     setName(value);
   };
 
@@ -39,7 +42,11 @@ const CreateChannelModal = () => {
       {
         onSuccess: (id) => {
           handleClose();
+          toast.success("Channel created");
           router.push(`/workspaces/${workspaceId}/channels/${id}`);
+        },
+        onError: () => {
+          toast.error("Failed to create channel");
         },
       }
     );
