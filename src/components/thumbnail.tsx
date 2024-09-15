@@ -18,15 +18,15 @@ const Thumbnail = ({ url }: ThumbnailProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <div className='relative overflow-hidden max-w-[360px] border rounded-lg my-2 cursor-zoom-in'>
+      <div className='relative overflow-hidden max-w-[360px] border rounded-lg my-2'>
+        <DialogTrigger>
           <img
             src={url}
             alt='Message image'
-            className='rounded-md object-cover size-full'
+            className='rounded-md object-cover size-full cursor-zoom-in'
           />
-        </div>
-      </DialogTrigger>
+        </DialogTrigger>
+      </div>
       <DialogContent className='max-w-[800px] border-none bg-transparent p-0 shadow-none'>
         <img
           src={url}
