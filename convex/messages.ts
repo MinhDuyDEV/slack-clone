@@ -129,7 +129,7 @@ export const get = query({
             );
 
             const reactionsWithoutMemberIdsProperty = reducedReactions.map(
-              ({ memberIds, ...rest }) => rest
+              ({ ...rest }) => rest
             );
 
             return {
@@ -186,7 +186,6 @@ export const create = mutation({
       conversationId: _conversationId,
       body: args.body,
       image: args.image,
-      updatedAt: Date.now(),
     });
   },
 });
