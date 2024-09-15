@@ -13,6 +13,7 @@ import Hint from "./hint";
 import Toolbar from "./toolbar";
 import Thumbnail from "./thumbnail";
 import Reactions from "./reactions";
+import ThreadBar from "./thread-bar";
 import { Doc, Id } from "../../convex/_generated/dataModel";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
@@ -25,7 +26,6 @@ interface MessageProps {
   authorImage?: string;
   authorName?: string;
   isAuthor: boolean;
-  // reactions?: any;
   reactions?: Array<
     Omit<Doc<"reactions">, "memberIds"> & {
       count: number;
@@ -42,6 +42,7 @@ interface MessageProps {
   hideThreadButton?: boolean;
   threadCount?: number;
   threadImage?: string;
+  threadName?: string;
   threadTimestamp?: number;
 }
 
@@ -66,6 +67,7 @@ const Message = ({
   reactions,
   threadCount,
   threadImage,
+  threadName,
   threadTimestamp,
 }: MessageProps) => {
   const { parentMessageId, onOpenMessage, onCloseMessage } = usePanel();
@@ -163,6 +165,13 @@ const Message = ({
                   </span>
                 ) : null}
                 <Reactions data={reactions || []} onChange={handleReaction} />
+                <ThreadBar
+                  count={threadCount}
+                  image={threadImage}
+                  name={threadName}
+                  timestamp={threadTimestamp}
+                  onClick={() => onOpenMessage(id)}
+                />
               </div>
             )}
           </div>
@@ -231,6 +240,13 @@ const Message = ({
                 <span className='text-xs text-muted-foreground'>(edited)</span>
               ) : null}
               <Reactions data={reactions || []} onChange={handleReaction} />
+              <ThreadBar
+                count={threadCount}
+                image={threadImage}
+                name={threadName}
+                timestamp={threadTimestamp}
+                onClick={() => onOpenMessage(id)}
+              />
             </div>
           )}
         </div>
