@@ -25,7 +25,7 @@ type CreateMessageValues = {
 
 const ChatInput = ({ placeholder }: ChatInputProps) => {
   const [editorKey, setEditorKey] = useState<number>(0);
-  const [idPending, setIsPending] = useState<boolean>(false);
+  const [isPending, setIsPending] = useState<boolean>(false);
 
   const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
@@ -83,7 +83,7 @@ const ChatInput = ({ placeholder }: ChatInputProps) => {
         key={editorKey}
         placeholder={placeholder}
         onSubmit={handleSubmit}
-        disabled={idPending}
+        disabled={isPending}
         innerRef={editorRef}
       />
     </div>
